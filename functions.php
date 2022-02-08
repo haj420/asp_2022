@@ -138,6 +138,11 @@ add_action( 'widgets_init', 'asp_2022_widgets_init' );
  * Enqueue scripts and styles.
  */
 function asp_2022_scripts() {
+    wp_enqueue_style( 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' );
+    wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'jquery-ui-core' );
+	wp_enqueue_script( 'jquery-ui-draggable' );
+    wp_enqueue_script( 'customjs', get_template_directory_uri() . '/custom.js', array(), _S_VERSION, true );
 	wp_enqueue_style( 'asp_2022-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'asp_2022-style', 'rtl', 'replace' );
 

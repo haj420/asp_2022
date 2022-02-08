@@ -1,4 +1,6 @@
-$('.qof-btn > a').click(function(){
+jQuery( document ).ready( function( $ ) {
+
+	$('.qof-btn > a').click(function(){
 	event.preventDefault();
 	$('#quick-order-form').show();
 	$('#quick-order-form').draggable();
@@ -69,3 +71,4 @@ $(".info > a").click(function() {
 	// })
 
 })
+} );
