@@ -138,11 +138,11 @@ add_action( 'widgets_init', 'asp_2022_widgets_init' );
  * Enqueue scripts and styles.
  */
 function asp_2022_scripts() {
-    wp_enqueue_style( 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' );
-    wp_enqueue_script( 'jquery' );
+    wp_enqueue_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css', false, NULL, 'all' );
+    
 	wp_enqueue_script( 'jquery-ui-core' );
 	wp_enqueue_script( 'jquery-ui-draggable' );
-    wp_enqueue_script( 'customjs', get_template_directory_uri() . '/custom.js', array(), _S_VERSION, true );
+    wp_enqueue_script( 'customjs', get_template_directory_uri() . '/custom.js', array( 'jquery'), _S_VERSION, true );
 	wp_enqueue_style( 'asp_2022-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'asp_2022-style', 'rtl', 'replace' );
 
@@ -150,6 +150,12 @@ function asp_2022_scripts() {
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
+	}
+	  if (!is_admin()) {
+		wp_enqueue_script( 'search_items',  get_template_directory_uri().'/custom.js', array( 'jquery' ), '1.0', true );
+		wp_localize_script( 'search_items', 'ajax_object', array(
+	    	'ajax_url' => admin_url( 'admin-ajax.php' )
+		));
 	}
 }
 add_action( 'wp_enqueue_scripts', 'asp_2022_scripts' );
@@ -186,3 +192,26 @@ if(get_current_blog_id() == 1) {
 } else {
 	// show full order form for distributor site
 }
+
+// wp_localize_script( 'customjs', 'ajax_object', array(
+//     'ajaxurl' => admin_url( 'admin-ajax.php' ),
+// ));
+
+/** @var string Should contain a string from an AJAX call */
+function search_items() {
+	  if (!is_admin()) {
+	      $sku = $_GET['text'];
+	      if ($sku == '') { echo "";}
+	      else {
+	        // $query = "SELECT sku, name FROM {$wpdb->prefix}products WHERE sku LIKE '{$sku}%' LIMIT 12";
+	        $result = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}catalog WHERE sku='{$sku}' LIMIT 1");
+	        while($row = $result->fetch_assoc()){
+	             $sku = $row['sku'];
+	             $name = $row['name'];
+	            echo ("<span class='skuSpan'><a href='#".$sku."'  onClick=\"addProduct('{$sku}', '{$name}');\">{$sku}</a></span><span class='nameSpan'><a href='#".$sku."'  onClick=\"addProduct('{$sku}', '{$name}');\">{$name}</a><br></span>");
+	        }
+	      }
+	  }
+}
+add_action('wp_ajax_search_items', 'search_items');
+add_action('wp_ajax_nopriv_search_items', 'search_items');

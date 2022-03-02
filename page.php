@@ -12,7 +12,11 @@
  * @package asp_2022
  */
 
-get_header();
+ if( 1 === get_current_blog_id() ) :
+    get_header( 'base' );
+ else:
+    get_header();
+ endif;
 ?>
 
 	<main id="primary" class="site-main">

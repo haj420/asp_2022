@@ -1049,13 +1049,18 @@ button.close > span {
 
 #quick-order-form label {
 	color:grey;
-	font-size:small;
+	font-size:x-small;
 }
 
 #quick-order-form input {
 	border-top:none;
 	border-left:none;
 	border-right:none;
+	height:13px;
+}
+
+#quick-order-form input::placeholder {
+	font-size: x-small;
 }
 
 select#shippingMethod {

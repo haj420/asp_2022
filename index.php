@@ -12,9 +12,9 @@
  * @package asp_2022
  */
  if( 1 === get_current_blog_id() ) :
-	 get_header( 'base' );
+ 	get_header( 'base' );
  else:
-	 get_header();
+ 	get_header();
  endif;
     // $blog_id = get_current_blog_id();
 	// echo "<script>alert('Blog ".$blog_id."');</script>";

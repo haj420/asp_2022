@@ -16,7 +16,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+	
 	<?php wp_head(); ?>
 </head>
 
@@ -182,10 +182,24 @@
 			</div>
 		</div>
       </div>
+	  <div class="row">
+		  <div class="col-8">
+			  <input type='text' id='search' name='qofSearchInput' class='qof-search-input mr-3' style="width:100%;"/>
+			  <!-- <div id="suggestions"></div> -->
+		  </div>
+		  <div class="col">
+			  <button type="button" class="btn btn-secondary qofSearch">Search</button>
+			  <button type="button" class="btn btn-secondary qofClear">Clear</button>
+		  </div>
+	  </div>
   </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary qof-submit">Submit Order</button>
-        <button type="button" class="btn btn-secondary qof-clear" data-dismiss="modal">Reset Form</button>
+      <div class="modal-footer text-center" style="
+  align-items: center;
+  justify-content: center;">
+        <button type="button" class="btn btn-primary qof-submit" style='background-color:#C3151C;color:white;width:40%;border-radius:0px;border:none;
+    font-size: 10px;padding: 10px;'>Submit Order</button>
+        <button type="button" class="btn btn-dark qof-clear" data-dismiss="modal" style="width:40%;border-radius:0px;border:none;
+    font-size: 10px;padding: 10px;">Reset Form</button>
       </div>
   </form>
     </div>
