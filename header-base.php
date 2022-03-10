@@ -16,7 +16,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-	
+
 	<?php wp_head(); ?>
 </head>
 
@@ -42,7 +42,7 @@
 	<div class="col-sm-12 col-md-8 text-center">
 		<div class="site-branding">
 		<?php
-		the_custom_logo();
+		// the_custom_logo();
 		if ( is_front_page() && is_home() ) :
 		?>
 		<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
@@ -185,6 +185,7 @@
 	  <div class="row">
 		  <div class="col-8">
 			  <input type='text' id='search' name='qofSearchInput' class='qof-search-input mr-3' style="width:100%;"/>
+
 			  <!-- <div id="suggestions"></div> -->
 		  </div>
 		  <div class="col">
