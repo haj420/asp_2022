@@ -17,6 +17,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
+	<script type="text/javascript">
+	var Url = '<?=site_url() ?>';
+	var distributorName = '<?=bloginfo('name')?>';
+	console.log(Url+' => '+distributorName);
+	</script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -29,7 +34,7 @@
 
 	<header id="masthead" class="site-header">
 		<div class="row">
-			<div class="col-sm-12 col-md-4">
+			<div class="col-sm-12 col-lg-4">
 				<div class="site-branding">
 				<?php
 				the_custom_logo();
@@ -50,7 +55,7 @@
 				</div><!-- .site-branding -->
 
 	</div>
-	<div class="col-sm-12 col-md-8 text-center">
+	<div class="col-sm-12 col-md col-xl-6 text-left">
 
 		<div class="">
 			<img src="https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/Screen-Shot-2022-01-06-at-15.25.05.png" class="custom-logo" alt="Auto Forms and Supplies" srcset="https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/Screen-Shot-2022-01-06-at-15.25.05.png 920w, https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/Screen-Shot-2022-01-06-at-15.25.05-300x84.png 300w, https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/Screen-Shot-2022-01-06-at-15.25.05-768x215.png 768w" sizes="(max-width: 920px) 100vw, 920px" style="
@@ -58,6 +63,13 @@ height: 176px;
 ">				<!--<h1 class="site-title"><a href="https://startwebservicesbackup.com/afs/" rel="home">Auto Forms and Supplies</a></h1>
 						<p class="site-description">Your one-stop shop!</p>-->
 			</div>
+
+	</div>
+	<div class='d-none d-lg-block col-lg'></div>
+</div>
+<div class="row">
+	<div class="col-3"></div>
+	<div class="col-8">
 		<nav id="site-navigation" class="main-navigation align-bottom text-center">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" style="margin:auto;"><?php esc_html_e( 'Primary Menu', 'asp_2022' ); ?></button>
 			<?php
@@ -69,12 +81,13 @@ height: 176px;
 			?>
 		</nav><!-- #site-navigation -->
 	</div>
+	<div class="col"></div>
 </div>
 	</header><!-- #masthead -->
 
 	<!-- Quick Order Form -->
 
-<div class="modal draggable" id="quick-order-form" tabindex="-1" role="dialog">
+<div class="modal draggable" id="quick-order-form" tabindex="-1" role="dialog" style='width:500px;'>
   <div class="modal-dialog modal-dialog-centered " role="document">
     <div class="modal-content">
 	<form id='qof-form' >
@@ -89,11 +102,7 @@ height: 176px;
   			<div class='col-sm-12 col-md-6'>
   				<h5>Account Information</h5>
 				<div class="form-group">
-			      <label for="distributorName">Distributor Name</label>
-			      <input type="text" class="form-control" id="distributorName" placeholder="ACME, Inc.">
 
-  			      <label for="distributorEmail">Distributor Email</label>
-  			      <input type="email" class="form-control" id="distributorEmail" placeholder="info@acme.com">
 
   			      <label for="name">Your Name</label>
   			      <input type="text" class="form-control" id="name" placeholder="Wile E. Coyote">
@@ -128,7 +137,7 @@ height: 176px;
 				  <label for="email">Email Address</label>
 				  <input type="email" class="form-control" id="city" placeholder="W.E.Coyote@wileecorp.com">
 
-				  <h3 class='text-red'>Drag Me Around</h3>
+				  <h3 class='text-danger mt-3'>Drag Me Around</h3>
 			    </div>
 			</div>
 			<div class='col-sm-12 col-md-6'>
@@ -181,10 +190,25 @@ height: 176px;
 			</div>
 		</div>
       </div>
+	  <div class="row">
+		  <div class="col-8">
+			  <input type='text' list="suggestions" id='search' name='qofSearchInput' class='qof-search-input mr-3' style="width:100%;"/>
+			  <div id="suggestions"></div>
+			  <!-- <div id="suggestions"></div> -->
+		  </div>
+		  <div class="col">
+			  <button type="button" class="btn btn-secondary qofSearch">Search</button>
+			  <button type="button" class="btn btn-secondary qofClear">Clear</button>
+		  </div>
+	  </div>
   </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary qof-submit">Submit Order</button>
-        <button type="button" class="btn btn-secondary qof-clear" data-dismiss="modal">Reset Form</button>
+      <div class="modal-footer text-center" style="
+  align-items: center;
+  justify-content: center;">
+        <button type="button" class="btn btn-primary qof-submit" style='background-color:#C3151C;color:white;width:40%;border-radius:0px;border:none;
+    font-size: 10px;padding: 10px;' onclick="event.preventDefault();">Submit Order</button>
+        <button type="button" class="btn btn-dark qof-clear" data-dismiss="modal" style="width:40%;border-radius:0px;border:none;
+    font-size: 10px;padding: 10px;">Reset Form</button>
       </div>
   </form>
     </div>

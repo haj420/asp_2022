@@ -10,7 +10,7 @@
 ?>
 
 <div class="row" style="background-color: #fff3e4;">
-<h2 class="h2lefthome mt-2 m-5" style="text-align: center;"><span style="color: black;"><b>Shop Your Way!</b> </span><span style="color: red;"><i>Over 3200 Items to Serve Your Every Need!</i></span></h2>
+<h2 class="h2lefthome mt-2" style="text-align: center;"><span style="color: black;"><b>Shop Your Way!</b> </span><span style="color: red;"><i>Over 3200 Items to Serve Your Every Need!</i></span></h2>
 &nbsp;
 	<div class='row'>
 		<div class='d-none d-md-flex col-2'></div>
@@ -27,7 +27,7 @@
 		<div class='d-none d-md-flex col-2'></div>
 	</div>
 </div>
-<div class="row mt-5" style="width: 80%; margin: 0 10%; align-items: center;">
+<div class="row mt-5 mb-5" style="width: 80%; margin: 0 10%; align-items: center;">
 <div class="col-4 col-md brands"><a href="https://autoformsandsupplies.cld.bz/AUTO-CAT-2021/118/"><img style="margin: 0 auto;" src="https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/caats-seat-covers-logo.png" /></a></div>
 <div class="col-4 col-md brands"><a href="https://autoformsandsupplies.cld.bz/AUTO-CAT-2021/134/"><img src="https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/Heavy-Brite-logo-2015-03-REFLEX-BLUE-C-1.png" /></a></div>
 <div class="col-4 col-md brands"><a href="https://autoformsandsupplies.cld.bz/AUTO-CAT-2021/138/"><img style="margin: 0 auto;" src="https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/ADVER-TAG-temporary.png" /></a></div>

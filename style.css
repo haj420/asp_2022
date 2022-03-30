@@ -1016,6 +1016,7 @@ textarea {
 .site-branding > a > img {
 	max-height:140px;
 	width:auto;
+	padding-left:20px;
 }
 
 /*  Quick Order Form  */

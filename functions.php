@@ -7,6 +7,8 @@
  * @package asp_2022
  */
 
+
+
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
@@ -139,10 +141,15 @@ add_action( 'widgets_init', 'asp_2022_widgets_init' );
  */
 function asp_2022_scripts() {
     wp_enqueue_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css', false, NULL, 'all' );
-    
+
 	wp_enqueue_script( 'jquery-ui-core' );
 	wp_enqueue_script( 'jquery-ui-draggable' );
     wp_enqueue_script( 'customjs', get_template_directory_uri() . '/custom.js', array( 'jquery'), _S_VERSION, true );
+    wp_localize_script( 'customjs', 'qof_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+
+
+
+
 	wp_enqueue_style( 'asp_2022-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'asp_2022-style', 'rtl', 'replace' );
 
@@ -159,6 +166,22 @@ function asp_2022_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'asp_2022_scripts' );
+
+// Add action to allow AJAX to access sof_search function
+add_action( "wp_ajax_qof_search", "qof_search" );
+add_action( "wp_ajax_nopriv_qof_search", "qof_search" );
+// create the function sof_search
+function qof_search() {
+	global $wpdb;
+	//access passed variable
+	$term = $_POST['qof-search-input'];
+	//search db for term
+	while($result = $wpdb->get_results("SELECT sku, ds FROM catalogNew  WHERE sku LIKE '%".$term."%' LIMIT 10")) {
+		// return results
+		wp_send_json ( $result );
+	}
+}
+
 
 /**
  * Implement the Custom Header feature.
@@ -187,31 +210,26 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-if(get_current_blog_id() == 1) {
-	//show full order form for big site
-} else {
-	// show full order form for distributor site
-}
 
 // wp_localize_script( 'customjs', 'ajax_object', array(
 //     'ajaxurl' => admin_url( 'admin-ajax.php' ),
 // ));
 
 /** @var string Should contain a string from an AJAX call */
-function search_items() {
-	  if (!is_admin()) {
-	      $sku = $_GET['text'];
-	      if ($sku == '') { echo "";}
-	      else {
-	        // $query = "SELECT sku, name FROM {$wpdb->prefix}products WHERE sku LIKE '{$sku}%' LIMIT 12";
-	        $result = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}catalog WHERE sku='{$sku}' LIMIT 1");
-	        while($row = $result->fetch_assoc()){
-	             $sku = $row['sku'];
-	             $name = $row['name'];
-	            echo ("<span class='skuSpan'><a href='#".$sku."'  onClick=\"addProduct('{$sku}', '{$name}');\">{$sku}</a></span><span class='nameSpan'><a href='#".$sku."'  onClick=\"addProduct('{$sku}', '{$name}');\">{$name}</a><br></span>");
-	        }
-	      }
-	  }
-}
-add_action('wp_ajax_search_items', 'search_items');
-add_action('wp_ajax_nopriv_search_items', 'search_items');
+// function search_items() {
+// 	  if (!is_admin()) {
+// 	      $sku = $_GET['text'];
+// 	      if ($sku == '') { echo "";}
+// 	      else {
+// 	        // $query = "SELECT sku, name FROM {$wpdb->prefix}products WHERE sku LIKE '{$sku}%' LIMIT 12";
+// 	        $result = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}catalog WHERE sku='{$sku}' LIMIT 1");
+// 	        while($row = $result->fetch_assoc()){
+// 	             $sku = $row['sku'];
+// 	             $name = $row['name'];
+// 	            echo ("<span class='skuSpan'><a href='#".$sku."'  onClick=\"addProduct('{$sku}', '{$name}');\">{$sku}</a></span><span class='nameSpan'><a href='#".$sku."'  onClick=\"addProduct('{$sku}', '{$name}');\">{$name}</a><br></span>");
+// 	        }
+// 	      }
+// 	  }
+// }
+// add_action('wp_ajax_search_items', 'search_items');
+// add_action('wp_ajax_nopriv_search_items', 'search_items');

@@ -1,7 +1,76 @@
+function addProduct(sku) {
+jQuery("#suggestions").empty();
+if(rownum === undefined) {var rownum = 0;}
+var newInput = "<div class='row mt-3'><div class='col'><label for='itemnum"+rownum+"'>Item<input name='itemnum"+rownum+"' value='"+sku+"'/></div><div class='col'><input name='itemquan"+rownum+"' type='number' placeholder='Qty'></div>";
+jQuery(".modal-body").append(newInput);
+
+rownum++;
+}
 (function( $ ) {
 
-    "use strict";
 
+
+	$('.qof-search-input').keyup(function() {
+		var _this = $(this);
+		$('#products').empty();
+		$('[name=products]').empty();
+		// AJAX url
+		var qofSearchInput = $(this).val();
+		console.log("SEARCH: "+qofSearchInput);
+		$.ajax({
+			type: "POST",
+			dataType: "json",
+			url: qof_ajax_object.ajax_url,
+			data: {
+				action : 'qof_search',
+				'qof-search-input': qofSearchInput
+			},
+			success: function(response){
+			$(response).each(function(i) {
+				// sku = response[i].sku;
+				// ds = response[i].ds;
+				// console.log(sku+":"+ds);
+				var line = '<div class="row overflow-auto"><div class="col item"><a href="#" onclick="addProduct('+response[i].sku+')">'+response[i].sku+" -- "+response[i].ds+'</a></div></div>';
+				// var option = '<option value='+response[i].sku+' onChange=addProduct("'+response[i].sku+'", '+response[i].ds+'")>'+response[i].ds+'</option>';
+				$('#suggestions').append(line);
+				console.log(line+" added!");
+					// $('#suggestions').append(option);
+					_this.focus();
+			});
+			},
+			error: function(response) {
+				console.log(response);
+			}
+		});
+	});
+
+	// QOF SUBMIT event listener (uses FOF submit)
+	$(".qof-submit").unbind('click').click(function() {
+		//prevent default (despite above unbind and prevent default AND button type being button, this still submits)
+		event.preventDefault();
+		// alert('.qof-submit');
+		if(distributorName === undefined) { var distributorName = $('#fofDistributorName').val(); }
+		var data = $('#qof-form').serialize();
+
+		//send ajax request
+		$.ajax({
+			type: "POST",
+			dataType: "json",
+			url: fof_ajax_object.ajax_url,
+			data: data,
+			success: function(response){
+				alert('message sent.')
+			},
+			error: function(response) {
+				alert('error');
+			}
+		});
+
+	});
+
+
+
+    "use strict";
 	$('.qof-btn > a').click(function(){
 	event.preventDefault();
 	$('#quick-order-form').show();
@@ -76,8 +145,7 @@ $(".info > a").click(function() {
 //full order form button
 // $(".fof > a").click(function() {
 // 	event.preventDefault();
-// 	var url      = window.location.href;
-// 	$("main").html("<iframe src='"+url+"/full-order-form/' id='homeFrame'></iframe>");
+// 	$("main").html("<iframe src='"+Url+"/full-order-form/' id='homeFrame'></iframe>");
 // })
 
 // $(document).ready(function(){
@@ -104,18 +172,18 @@ $(".info > a").click(function() {
 //   });
 // });
 
-$(document).ready(function(){
-  $("#search").keyup(function(){
-    var input = $("#search").val();
-    $.ajax({url: ajax_object.ajax_url,
-		    action: 'search_items',
-            data: "?text="+input,
-            success: function(result){
-      // $("#suggestions").html(result);
-        alert('Got this from the server: ' + result);
-      //$("#input").value(result);
-    }});
-  });
-});
+// $(document).ready(function(){
+//   $("#search").keyup(function(){
+//     var input = $("#search").val();
+//     $.ajax({url: ajax_object.ajax_url,
+// 		    action: 'search_items',
+//             data: "?text="+input,
+//             success: function(result){
+//       // $("#suggestions").html(result);
+//         alert('Got this from the server: ' + result);
+//       //$("#input").value(result);
+//     }});
+//   });
+// });
 
 })(jQuery);
