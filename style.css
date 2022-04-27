@@ -691,7 +691,7 @@ textarea {
 .main-navigation li {
 	position: relative;
     margin: 0 10px;
-    font-size: smaller;
+    font-size: medium;
 }
 
 .main-navigation a {
@@ -713,7 +713,7 @@ textarea {
 	}
 
 	.main-navigation ul {
-		display: flex;
+		display: inline-flex;
 	}
 }
 
@@ -804,6 +804,8 @@ textarea {
 /* Make sure logo link wraps around logo image. */
 .custom-logo-link {
 	display: inline-block;
+	width:789px;
+	height:200px;
 }
 
 /* Captions
@@ -1014,13 +1016,19 @@ textarea {
 	height:140px;
 }
 .site-branding > a > img {
-	max-height:140px;
+	max-height:200px;
 	width:auto;
-	padding-left:20px;
 }
 
 /*  Quick Order Form  */
+
+
 #quick-order-form {
+	width:600px;
+}
+
+#quick-order-form > .modal-dialog {
+	max-width: 600px!important;
 }
 
 #qof-header {
@@ -1050,14 +1058,15 @@ button.close > span {
 
 #quick-order-form label {
 	color:grey;
-	font-size:x-small;
+	font-size:smaller;
 }
 
 #quick-order-form input {
 	border-top:none;
 	border-left:none;
 	border-right:none;
-	height:13px;
+	/* height:13px; */
+	font-size:13px;
 }
 
 #quick-order-form input::placeholder {
@@ -1080,4 +1089,9 @@ select#shippingMethod {
 
 li.menu-item.focus > a {
 	color:#D52E36!important;
+}
+.main-navigation a {
+    display: block;
+    text-decoration: none;
+    color: black!important;
 }

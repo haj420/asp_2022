@@ -55,21 +55,20 @@
 				</div><!-- .site-branding -->
 
 	</div>
-	<div class="col-sm-12 col-md col-xl-6 text-left">
+	<div class="col-sm-12 col-md text-center">
 
 		<div class="">
-			<img src="https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/Screen-Shot-2022-01-06-at-15.25.05.png" class="custom-logo" alt="Auto Forms and Supplies" srcset="https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/Screen-Shot-2022-01-06-at-15.25.05.png 920w, https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/Screen-Shot-2022-01-06-at-15.25.05-300x84.png 300w, https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/Screen-Shot-2022-01-06-at-15.25.05-768x215.png 768w" sizes="(max-width: 920px) 100vw, 920px" style="
+			<img src="https://startwebservicesbackup.com/afs/wp-content/uploads/2022/04/Serving-all-of-your-needs033022.png" class="custom-logo" alt="Auto Forms and Supplies" srcset="https://startwebservicesbackup.com/afs/wp-content/uploads/2022/04/Serving-all-of-your-needs033022.png 920w, https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/2022/04/Serving-all-of-your-needs033022.png 300w, https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/2022/04/Serving-all-of-your-needs033022.png 768w" sizes="(max-width: 920px) 100vw, 920px" style="
 height: 176px;
 ">				<!--<h1 class="site-title"><a href="https://startwebservicesbackup.com/afs/" rel="home">Auto Forms and Supplies</a></h1>
 						<p class="site-description">Your one-stop shop!</p>-->
 			</div>
 
 	</div>
-	<div class='d-none d-lg-block col-lg'></div>
 </div>
 <div class="row">
-	<div class="col-3"></div>
-	<div class="col-8">
+	<div class="col-4"></div>
+	<div class="col">
 		<nav id="site-navigation" class="main-navigation align-bottom text-center">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" style="margin:auto;"><?php esc_html_e( 'Primary Menu', 'asp_2022' ); ?></button>
 			<?php
@@ -81,16 +80,16 @@ height: 176px;
 			?>
 		</nav><!-- #site-navigation -->
 	</div>
-	<div class="col"></div>
 </div>
 	</header><!-- #masthead -->
 
 	<!-- Quick Order Form -->
 
-<div class="modal draggable" id="quick-order-form" tabindex="-1" role="dialog" style='width:500px;'>
+<div class="modal draggable" id="quick-order-form" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered " role="document">
     <div class="modal-content">
 	<form id='qof-form' >
+		<input type="hidden" name="action" value="send_message"/>
       <div class="modal-header" id='qof-header'>
         <h5 class="modal-title text-white text-center">Quick Order Form</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -105,46 +104,45 @@ height: 176px;
 
 
   			      <label for="name">Your Name</label>
-  			      <input type="text" class="form-control" id="name" placeholder="Wile E. Coyote">
+  			      <input type="text" class="form-control" id="name" name="name">
 
 				  <label for="companyName">Company Name</label>
-				  <input type="text" class="form-control" id='companyName' placeholder='Wile E. Corporation'>
+				  <input type="text" class="form-control" id='companyName' name="accountno">
 
 				  <label for="address">Address</label>
-				  <input type="text" class="form-control" id="address" placeholder="123 Any St.">
+				  <input type="text" class="form-control" id="address" name="add">
 
 				  <label for="city">City/Town</label>
-				  <input type="text" class="form-control" id="city" placeholder="Desertville">
+				  <input type="text" class="form-control" id="city" name="city">
 
 				  <div class='row'>
 					  <div class='col-sm-12 col-md-6'>
 				    	<label for="state">State</label>
-				    	<input type="text" class="form-control" id="state" placeholder="AZ">
+				    	<input type="text" class="form-control" id="state" name="state">
 				  	  </div>
 					  <div class='col-sm-12 col-md-6'>
 					    <label for="zip">Zip Code</label>
-					    <input type="text" class="form-control" id="zip" placeholder="00000">
+					    <input type="text" class="form-control" id="zip" name="zip">
 					  </div>
 				  </div>
 
 
-				  <label for="po">Purchase Order Number</label>
-				  <input type="text" class="form-control" id="po" placeholder="12345">
 
-				  <label for="phone">Phone Number</label>
-				  <input type="phone" class="form-control" id="phone" placeholder="(800) 222-1234">
-
-				  <label for="email">Email Address</label>
-				  <input type="email" class="form-control" id="city" placeholder="W.E.Coyote@wileecorp.com">
-
-				  <h3 class='text-danger mt-3'>Drag Me Around</h3>
 			    </div>
 			</div>
 			<div class='col-sm-12 col-md-6'>
-				<h5>Shipping Information</h5>
+				<label for="po" class='text-dark'><h6>Purchase Order Number</h6></label>
+				<input type="text" class="form-control" id="po" name="customerpo">
+
+				<label for="phone">Phone Number</label>
+				<input type="phone" class="form-control" id="phone" name="phonenumber">
+
+				<label for="email">Email Address</label>
+				<input type="email" class="form-control" id="email" name="emailadd">
+				<h5 class='mt-3'>Shipping Information</h5>
 				<div class="form-group">
 				  <label for="shippingMethod">Prefered Shipping Method</label>
-				  <select name="shippingMethod" id="shippingMethod" required="">
+				  <select name="shippingmethod" id="shippingMethod" required="">
 					  <option value="">Choose Shipping Method</option>
 					  <option value="UPS/FedEx Ground">UPS/FedEx Ground</option>
 					  <option value="Next Day Air">Next Day Air</option>
@@ -153,7 +151,7 @@ height: 176px;
 				  </select>
 
 				<div class="form-check">
-				  <input class="form-check-input" type="radio" name="shippingAddress" id="shippingAddressSame" value="Same Addres" checked>
+				  <input class="form-check-input" type="radio" name="shippingAddress" id="shippingAddressSame" value="Same Address" checked>
 				  <label class="form-check-label" for="shippingAddressSame">
 				    Same Address
 				  </label>
@@ -167,23 +165,26 @@ height: 176px;
 
 
 				<div id='shipAddressGroup' class="form-group" style='display:none;'>
+					<label for="attn">Company</label>
+					<input type="text" class="form-control" id='shipcompany'>
+
 					<label for="attn">Attention</label>
-					<input type="text" class="form-control" id='attn' placeholder='John Doe'>
+					<input type="text" class="form-control" id='attn'>
 
-					<label for="address">Address</label>
-					<input type="text" class="form-control" id="shipaddress" placeholder="123 Any St.">
+					<label for="shipaddress">Address</label>
+					<input type="text" class="form-control" id="shipaddress" name="shipadd">
 
-					<label for="city">City/Town</label>
-					<input type="text" class="form-control" id="shipcity" placeholder="Desertville">
+					<label for="shipcity">City/Town</label>
+					<input type="text" class="form-control" id="shipcity" name="shipcity">
 
 					<div class='row'>
 						<div class='col-sm-12 col-md-6'>
-						  <label for="state">State</label>
-						  <input type="text" class="form-control" id="shipstate" placeholder="AZ">
+						  <label for="shipstate">State</label>
+						  <input type="text" class="form-control" id="shipstate" name="shipstate">
 						</div>
 						<div class='col-sm-12 col-md-6'>
-						  <label for="zip">Zip Code</label>
-						  <input type="text" class="form-control" id="shipzip" placeholder="00000">
+						  <label for="shipzip">Zip Code</label>
+						  <input type="text" class="form-control" id="shipzip">
 						</div>
 					</div>
 				</div>
@@ -191,16 +192,60 @@ height: 176px;
 		</div>
       </div>
 	  <div class="row">
-		  <div class="col-8">
-			  <input type='text' list="suggestions" id='search' name='qofSearchInput' class='qof-search-input mr-3' style="width:100%;"/>
-			  <div id="suggestions"></div>
-			  <!-- <div id="suggestions"></div> -->
-		  </div>
 		  <div class="col">
-			  <button type="button" class="btn btn-secondary qofSearch">Search</button>
-			  <button type="button" class="btn btn-secondary qofClear">Clear</button>
+			  <h3 class='text-danger mt-3 text-center'>Drag Me Around</h3>
+ 			 <h5 class='text-center'>Search For Your Item</h5>
+		 </div>
+	 </div>
+	  <div class="row">
+		  <div class="col-10">
+ 			 <!-- <label for='qofSearchInput'>Search by Item Number</label> -->
+
+ 			 <input type='text' list="products" id='search' name='qofSearchInput' class='qof-search-input mr-3' style="width:100%;" oninput='onInput()' />
+ 			 <datalist id="products"></datalist>
+ 			 <script>
+ 			 function onInput() {
+ 			   var val = document.getElementById("search").value;
+ 			   var opts = document.getElementById('products').childNodes;
+ 			   for (var i = 0; i < opts.length; i++) {
+ 				 if (opts[i].value === val) {
+ 				   // An item was selected from the list!
+ 				   addProduct(opts[i].value);
+ 				   // alert(opts[i].value);
+ 				   break;
+ 				 }
+ 			   }
+ 			 }
+ 		   </script>
+ 			 <!-- <div id="suggestions"></div> -->
+ 		 </div>
+		  <div class="col-2">
+			  <!-- <button type="button" class="btn btn-secondary qofSearch">Search</button> -->
+			  <button type="button" class="btn btn-secondary qofClear" onclick="jQuery('.qof-search-input').val('');" style='width:97%;'>Clear</button>
 		  </div>
 	  </div>
+	  <div class="row">
+		  <div class="col">
+			   <div id="suggestionsHeadings">
+				   <div class='row mt-3'>
+			  	<div class='col-2 text-center'>
+					<label for='itemnum"+rownum+"'>Item #</label>
+		   		</div>
+				<div class='col-8 text-center'>
+					<label for='itemDesc"+rownum+"'>Description (Not required)</label>
+				</div>
+				<div class='col-2 text-center'>
+					<label for='itemquan"+rownum+"'>Quantity</label>
+				</div>
+			</div>
+			   </div>
+		   </div>
+	   </div>
+	  <div class="row">
+		  <div class="col">
+			   <div id="suggestions"></div>
+		   </div>
+	   </div>
   </div>
       <div class="modal-footer text-center" style="
   align-items: center;
