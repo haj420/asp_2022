@@ -125,7 +125,7 @@
 
 			    </div>
 			</div>
-			<div class='col-sm-12 col-md-6'>
+			<div class='col-sm-12 col-md-6 mt-3'>
 				<label for="po" class="text-dark"><h6>Purchase Order Number</h6></label>
 				<input type="text" class="form-control" id="po" name="customerpo">
 
@@ -197,7 +197,7 @@
 		  <div class="col-10">
  			 <!-- <label for='qofSearchInput'>Search by Item Number</label> -->
 
- 			 <input type='text' list="products" id='search' name='qofSearchInput' class='qof-search-input mr-3' style="width:100%;" oninput='onInput()' />
+ 			 <input type='text' list="products" id='search' name='qofSearchInput' class='qof-search-input mr-3' style="width:100%;" />
  			 <datalist id="products"></datalist>
  			 <script>
  			 function onInput() {
@@ -242,6 +242,12 @@
 			   <div id="suggestions"></div>
 		   </div>
 	   </div>
+	   <div class="row">
+		   <div class="col">
+			   <label for="addcomments">Comments: </label>
+  						<textarea name="addcomments" id="comments" rows="1" cols="50"></textarea>
+					</div>
+				</div>
   </div>
       <div class="modal-footer text-center" style="align-items: center; justify-content: center;">
         <button type="button" class="btn btn-primary qof-submit" style='background-color:#C3151C;color:white;width:40%;border-radius:0px;border:none;font-size: 10px;padding: 10px;'>Submit Order</button>

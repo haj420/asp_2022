@@ -58,9 +58,7 @@
 	<div class="col-sm-12 col-md text-center">
 
 		<div class="">
-			<img src="https://startwebservicesbackup.com/afs/wp-content/uploads/2022/04/Serving-all-of-your-needs033022.png" class="custom-logo" alt="Auto Forms and Supplies" srcset="https://startwebservicesbackup.com/afs/wp-content/uploads/2022/04/Serving-all-of-your-needs033022.png 920w, https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/2022/04/Serving-all-of-your-needs033022.png 300w, https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/2022/04/Serving-all-of-your-needs033022.png 768w" sizes="(max-width: 920px) 100vw, 920px" style="
-height: 176px;
-">				<!--<h1 class="site-title"><a href="https://startwebservicesbackup.com/afs/" rel="home">Auto Forms and Supplies</a></h1>
+			<img src="https://startwebservicesbackup.com/afs/wp-content/uploads/2022/04/Serving-all-of-your-needs033022.png" class="custom-logo" alt="Auto Forms and Supplies" srcset="https://startwebservicesbackup.com/afs/wp-content/uploads/2022/04/Serving-all-of-your-needs033022.png 920w, https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/2022/04/Serving-all-of-your-needs033022.png 300w, https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/2022/04/Serving-all-of-your-needs033022.png 768w" sizes="(max-width: 920px) 100vw, 920px" >				<!--<h1 class="site-title"><a href="https://startwebservicesbackup.com/afs/" rel="home">Auto Forms and Supplies</a></h1>
 						<p class="site-description">Your one-stop shop!</p>-->
 			</div>
 
@@ -130,7 +128,7 @@ height: 176px;
 
 			    </div>
 			</div>
-			<div class='col-sm-12 col-md-6'>
+			<div class='col-sm-12 col-md-6 mt-3'>
 				<label for="po" class='text-dark'><h6>Purchase Order Number</h6></label>
 				<input type="text" class="form-control" id="po" name="customerpo">
 
@@ -232,7 +230,7 @@ height: 176px;
 					<label for='itemnum"+rownum+"'>Item #</label>
 		   		</div>
 				<div class='col-8 text-center'>
-					<label for='itemDesc"+rownum+"'>Description (Not required)</label>
+					<label for='itemdesc"+rownum+"'>Description (Not required)</label>
 				</div>
 				<div class='col-2 text-center'>
 					<label for='itemquan"+rownum+"'>Quantity</label>
@@ -246,6 +244,12 @@ height: 176px;
 			   <div id="suggestions"></div>
 		   </div>
 	   </div>
+	   <div class="row">
+		   <div class="col">
+			   <label for="addcomments">Comments: </label>
+  						<textarea name="addcomments" id="comments" rows="1" cols="50"></textarea>
+					</div>
+				</div>
   </div>
       <div class="modal-footer text-center" style="
   align-items: center;

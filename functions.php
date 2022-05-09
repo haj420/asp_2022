@@ -176,7 +176,7 @@ function qof_search() {
 	//access passed variable
 	$term = $_POST['qof-search-input'];
 	//search db for term
-	while($result = $wpdb->get_results("SELECT sku, ds FROM catalogNew  WHERE sku LIKE '%".$term."%' LIMIT 10")) {
+	while($result = $wpdb->get_results("SELECT sku, ds FROM catalogNew")) {
 		// return results
 		wp_send_json ( $result );
 	}
