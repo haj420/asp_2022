@@ -22,6 +22,7 @@
 	var distributorName = '<?=bloginfo('name')?>';
 	console.log(Url+' => '+distributorName);
 	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -102,13 +103,13 @@
 
 
   			      <label for="name">Your Name</label>
-  			      <input type="text" class="form-control" id="name" name="name">
+  			      <input type="text" class="form-control" id="name" name="name" required>
 
 				  <label for="companyName">Company Name</label>
-				  <input type="text" class="form-control" id='companyName' name="accountno">
+				  <input type="text" class="form-control" id='companyName' name="accountno" required>
 
 				  <label for="address">Address</label>
-				  <input type="text" class="form-control" id="address" name="add">
+				  <input type="text" class="form-control" id="address" name="add" required>
 
 				  <label for="city">City/Town</label>
 				  <input type="text" class="form-control" id="city" name="city">
@@ -255,7 +256,7 @@
   align-items: center;
   justify-content: center;">
         <button type="button" class="btn btn-primary qof-submit" style='background-color:#C3151C;color:white;width:40%;border-radius:0px;border:none;
-    font-size: 10px;padding: 10px;' onclick="event.preventDefault();">Submit Order</button>
+    font-size: 10px;padding: 10px;'>Submit Order</button>
         <button type="button" class="btn btn-dark qof-clear" data-dismiss="modal" style="width:40%;border-radius:0px;border:none;
     font-size: 10px;padding: 10px;">Reset Form</button>
       </div>

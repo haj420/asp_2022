@@ -18,6 +18,7 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -93,31 +94,31 @@
   				<h5>Account Information</h5>
 				<div class="form-group">
 			      <label for="distributorName">Distributor Name</label>
-			      <input type="text" class="form-control" id="distributorName" name="distributorName">
+			      <input type="text" class="form-control" id="distributorName" name="distributorName" required>
 
   			      <label for="distributorEmail">Distributor Email</label>
-  			      <input type="email" class="form-control" id="distributorEmail" name="distributorEmail" >
+  			      <input type="email" class="form-control" id="distributorEmail" name="distributorEmail" required >
 
   			      <label for="name">Your Name</label>
-  			      <input type="text" class="form-control" id="name" name="name">
+  			      <input type="text" class="form-control" id="name" name="name" required>
 
 				  <label for="companyName">Company Name</label>
-				  <input type="text" class="form-control" id='companyName' name="accountno">
+				  <input type="text" class="form-control" id='companyName' name="accountno" required>
 
 				  <label for="address">Address</label>
-				  <input type="text" class="form-control" id="address" name="add">
+				  <input type="text" class="form-control" id="address" name="add" required>
 
 				  <label for="city">City/Town</label>
-				  <input type="text" class="form-control" id="city" name="city">
+				  <input type="text" class="form-control" id="city" name="city" required>
 
 				  <div class='row'>
 					  <div class='col-sm-12 col-md-6'>
 				    	<label for="state">State</label>
-				    	<input type="text" class="form-control" id="state" name="state">
+				    	<input type="text" class="form-control" id="state" name="state" required>
 				  	  </div>
 					  <div class='col-sm-12 col-md-6'>
 					    <label for="zip">Zip Code</label>
-					    <input type="text" class="form-control" id="zip" name="zip">
+					    <input type="text" class="form-control" id="zip" name="zip" required>
 					  </div>
 				  </div>
 
@@ -127,18 +128,18 @@
 			</div>
 			<div class='col-sm-12 col-md-6 mt-3'>
 				<label for="po" class="text-dark"><h6>Purchase Order Number</h6></label>
-				<input type="text" class="form-control" id="po" name="customerpo">
+				<input type="text" class="form-control" id="po" name="customerpo" required>
 
 				<label for="phone">Phone Number</label>
-				<input type="phone" class="form-control" id="phone" name="phonenumber">
+				<input type="phone" class="form-control" id="phone" name="phonenumber" required>
 
 				<label for="email">Email Address</label>
-				<input type="email" class="form-control" id="email" name="emailadd">
+				<input type="email" class="form-control" id="email" name="emailadd" required>
 
 				<h5 class='mt-3'>Shipping Information</h5>
 				<div class="form-group">
 				  <label for="shippingMethod">Prefered Shipping Method</label>
-				  <select name="shippingMethod" id="shippingMethod" name="shippingmethod" required="">
+				  <select name="shippingMethod" id="shippingMethod" name="shippingmethod" required>
 					  <option value="">Choose Shipping Method</option>
 					  <option value="UPS/FedEx Ground">UPS/FedEx Ground</option>
 					  <option value="Next Day Air">Next Day Air</option>
@@ -197,7 +198,7 @@
 		  <div class="col-10">
  			 <!-- <label for='qofSearchInput'>Search by Item Number</label> -->
 
- 			 <input type='text' list="products" id='search' name='qofSearchInput' class='qof-search-input mr-3' style="width:100%;" />
+ 			 <input type='text' list="products" id='search' name='qofSearchInput' class='qof-search-input mr-3' style="width:100%;"  oninput='onInput()'/>
  			 <datalist id="products"></datalist>
  			 <script>
  			 function onInput() {

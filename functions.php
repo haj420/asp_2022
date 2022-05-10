@@ -158,12 +158,12 @@ function asp_2022_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-	  if (!is_admin()) {
-		wp_enqueue_script( 'search_items',  get_template_directory_uri().'/custom.js', array( 'jquery' ), '1.0', true );
-		wp_localize_script( 'search_items', 'ajax_object', array(
-	    	'ajax_url' => admin_url( 'admin-ajax.php' )
-		));
-	}
+	//   if (!is_admin()) {
+	// 	wp_enqueue_script( 'search_items',  get_template_directory_uri().'/custom.js', array( 'jquery' ), '1.0', true );
+	// 	wp_localize_script( 'search_items', 'ajax_object', array(
+	//     	'ajax_url' => admin_url( 'admin-ajax.php' )
+	// 	));
+	// }
 }
 add_action( 'wp_enqueue_scripts', 'asp_2022_scripts' );
 
@@ -176,7 +176,7 @@ function qof_search() {
 	//access passed variable
 	$term = $_POST['qof-search-input'];
 	//search db for term
-	while($result = $wpdb->get_results("SELECT sku, ds FROM catalogNew")) {
+	while($result = $wpdb->get_results("SELECT sku, ds FROM catalogNew WHERE sku = '".$term."'")) {
 		// return results
 		wp_send_json ( $result );
 	}
