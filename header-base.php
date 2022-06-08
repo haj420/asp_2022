@@ -17,8 +17,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
-	<?php wp_head(); ?>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+	<?php wp_head(); ?></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script> -->
+	 <script src="https://www.google.com/recaptcha/api.js"></script>
+	 <script>
+	 function onSubmit(token) {
+	 	 document.getElementById(".qof-form").submit();
+	    }
+		</script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -139,7 +145,7 @@
 				<h5 class='mt-3'>Shipping Information</h5>
 				<div class="form-group">
 				  <label for="shippingMethod">Prefered Shipping Method</label>
-				  <select name="shippingMethod" id="shippingMethod" name="shippingmethod" required>
+				  <select name="shippingMethod" id="shippingMethod" name="shippingMethod" required>
 					  <option value="">Choose Shipping Method</option>
 					  <option value="UPS/FedEx Ground">UPS/FedEx Ground</option>
 					  <option value="Next Day Air">Next Day Air</option>
@@ -163,13 +169,13 @@
 
 				<div id='shipAddressGroup' class="form-group" style='display:none;'>
 					<label for="attn">Company</label>
-					<input type="text" class="form-control" id='shipcompany'>
+					<input type="text" class="form-control" id='shipaccountno'>
 
 					<label for="shipattn">Attention</label>
-					<input type="text" class="form-control" id='attn' name="attn">
+					<input type="text" class="form-control" id='attn' name="shipattn">
 
 					<label for="shipaddress">Address</label>
-					<input type="text" class="form-control" id="attn" name="shipadd" name="attn">
+					<input type="text" class="form-control" id="attn" name="shipadd">
 
 					<label for="shipcity">City/Town</label>
 					<input type="text" class="form-control" id="shipcity" name="shipcity">
@@ -251,9 +257,13 @@
 				</div>
   </div>
       <div class="modal-footer text-center" style="align-items: center; justify-content: center;">
-        <button type="button" class="btn btn-primary qof-submit" style='background-color:#C3151C;color:white;width:40%;border-radius:0px;border:none;font-size: 10px;padding: 10px;'>Submit Order</button>
-        <button type="button" class="btn btn-dark qof-clear" data-dismiss="modal" style="width:40%;border-radius:0px;border:none;
-    font-size: 10px;padding: 10px;">Reset Form</button>
+		  <button type="button" class="btn btn-primary qof-submit g-recaptcha"
+          data-sitekey="6LfwZtoUAAAAABBo9xlcJHOEd_2WXqiqYsZN5q5p"
+          data-callback='onSubmit'
+          data-action='submit' style='background-color:#C3151C;color:white;width:40%;border-radius:0px;border:none;
+      font-size: 10px;padding: 10px;'>Submit Order</button>
+          <button type="button" class="btn btn-dark qof-clear" data-dismiss="modal" style="width:40%;border-radius:0px;border:none;
+      font-size: 10px;padding: 10px;">Reset Form</button>
       </div>
   </form>
     </div>

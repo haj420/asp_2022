@@ -9,6 +9,55 @@ document.addEventListener('keypress', function (e) {
         });
 
 
+		jQuery(".qof-form").submit(function() {
+		event.preventDefault();
+			alert('this has a class apparently!');
+		})
+
+		// QOF SUBMIT event listener (uses FOF submit)
+		// jQuery("#qof-form").submit(function() {
+		   function send_qof() {
+			//prevent default
+			event.preventDefault();
+			console.log('form submission function started.');
+
+			// alert('.qof-submit');
+			if(distributorName === undefined) { var distributorName = jQuery('#distributorname').val(); }
+			var data = jQuery('#qof-form').serialize();
+
+			//send ajax request
+			jQuery.ajax({
+				type: "POST",
+				dataType: "json",
+				url: fof_ajax_object.ajax_url,
+				data: data,
+				success: function(response){
+					// console.log(form);
+					jQuery('.qof-clear').hide();
+					jQuery('.qof-submit').hide();
+					jQuery('#qof-form > .modal-body').html('<h4 class="text-center">Thank you for your order!</h4><br><h5>(If you do not receive an order acknowledgement within 24 hours, Please contact us)</h5><br><p class="text-center">Close this box using the x in the top right hand corner.</p>');
+					jQuery('#qof-header > button.close').click(function() {
+						location.reload();
+					})
+					console.log(response.responseText);
+				},
+				error: function(response) {
+					alert('error: '+response.responseText);
+				}
+			});
+		}
+
+		function onSubmit(token) {
+			console.log('form submitted. Token received: '+token);
+			 // document.getElementById("qof-form").submit();
+			 send_qof();
+		   }
+
+
+jQuery('input[name="shippingAddress"]').change(function() {
+	console.log('sof address BTN CLICKED.');
+	jQuery('#shipAddressGroup').toggle();
+})
 
 var rownum = 0;
 function addProduct(sku) {
@@ -39,78 +88,6 @@ function addProduct(sku) {
 
 
 
-// FORM VALIDATION RULES
-	$(function() {
-	  // Initialize form validation on the registration form.
-	  // It has the name attribute "registration"
-	  $("#qof-form").validate({
-	    // Specify validation rules
-	    rules: {
-	      // The key name on the left side is the name attribute
-	      // of an input field. Validation rules are defined
-	      // on the right side
-	      name: "required",
-	      companyName: "required",
-		  add: "required",
-		  city: "required",
-		  customerpo: "required",
-		  shippingMethod: "required",
-	      emailadd: {
-	        required: true,
-	        // Specify that email should be validated
-	        // by the built-in "email" rule
-	        email: true
-		},
-	    },
-    // Specify validation error messages
-    messages: {
-      name: "Please enter your firstname",
-      comapanyName: "Please enter your company name",
-	  add: "Please enter your address",
-	  city: "Please enter your city",
-	  customerpo: "Please enter your purchase order number",
-	  shippingMethod: "Please cheese a shipping method",
-      email: "Please enter a valid email address"
-    },
-    // Make sure the form is submitted to the destination defined
-    // in the "action" attribute of the form when valid
-    submitHandler: function(form) {
-      form.submit();
-    }
-  });
-});
-		// var form = $('#qof-form > .modal-body').html();
-	// QOF SUBMIT event listener (uses FOF submit)
-	$(".qof-submit").click(function() {
-		//prevent default
-		event.preventDefault();
-
-		// alert('.qof-submit');
-		if(distributorName === undefined) { var distributorName = $('#distributorname').val(); }
-		var data = $('#qof-form').serialize();
-
-		//send ajax request
-		$.ajax({
-			type: "POST",
-			dataType: "json",
-			url: fof_ajax_object.ajax_url,
-			data: data,
-			success: function(response){
-				// console.log(form);
-				$('.qof-clear').hide();
-				$('.qof-submit').hide();
-				$('#qof-form > .modal-body').html('<h4 class="text-center">Thank you for your order!</h4><br><h5>(If you do not receive an order acknowledgement within 24 hours, Please contact us)</h5><br><p class="text-center">Close this box using the x in the top right hand corner.</p>');
-				$('#qof-header > button.close').click(function() {
-					location.reload();
-				})
-				console.log(response.responseText);
-			},
-			error: function(response) {
-				alert('error: '+response.responseText);
-			}
-		});
-	});
-
 $('.qof-btn > a').click(function(){
 event.preventDefault();
 $('#quick-order-form').show();
@@ -123,6 +100,7 @@ $('button.close').click(function(){
 $('.qof-clear').click(function(){
 	$('#qof-form')[0].reset();
 	jQuery('.cart_item').remove();
+	$('#shipAddressGroup').hide();
 })
 $('input[name=shippingAddress]').change(function() {
 	$('#shipAddressGroup').toggle();

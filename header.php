@@ -13,6 +13,7 @@
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
+
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
@@ -22,7 +23,13 @@
 	var distributorName = '<?=bloginfo('name')?>';
 	console.log(Url+' => '+distributorName);
 	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script> -->
+	 <script src="https://www.google.com/recaptcha/api.js"></script>
+	 <script>
+	 function onSubmit(token) {
+	 	 document.getElementById(".qof-form").submit();
+	    }
+		</script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -35,7 +42,7 @@
 
 	<header id="masthead" class="site-header">
 		<div class="row">
-			<div class="col-sm-12 col-lg-4">
+			<div class="col-sm-12 col-xl">
 				<div class="site-branding">
 				<?php
 				the_custom_logo();
@@ -56,7 +63,7 @@
 				</div><!-- .site-branding -->
 
 	</div>
-	<div class="col-sm-12 col-md text-center">
+	<div class="col-sm-12 col-xl text-center">
 
 		<div class="">
 			<img src="https://startwebservicesbackup.com/afs/wp-content/uploads/2022/04/Serving-all-of-your-needs033022.png" class="custom-logo" alt="Auto Forms and Supplies" srcset="https://startwebservicesbackup.com/afs/wp-content/uploads/2022/04/Serving-all-of-your-needs033022.png 920w, https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/2022/04/Serving-all-of-your-needs033022.png 300w, https://startwebservicesbackup.com/afs/wp-content/uploads/2022/01/2022/04/Serving-all-of-your-needs033022.png 768w" sizes="(max-width: 920px) 100vw, 920px" >				<!--<h1 class="site-title"><a href="https://startwebservicesbackup.com/afs/" rel="home">Auto Forms and Supplies</a></h1>
@@ -141,7 +148,7 @@
 				<h5 class='mt-3'>Shipping Information</h5>
 				<div class="form-group">
 				  <label for="shippingMethod">Prefered Shipping Method</label>
-				  <select name="shippingmethod" id="shippingMethod" required="">
+				  <select name="shippingMethod" id="shippingMethod" required="">
 					  <option value="">Choose Shipping Method</option>
 					  <option value="UPS/FedEx Ground">UPS/FedEx Ground</option>
 					  <option value="Next Day Air">Next Day Air</option>
@@ -165,10 +172,10 @@
 
 				<div id='shipAddressGroup' class="form-group" style='display:none;'>
 					<label for="attn">Company</label>
-					<input type="text" class="form-control" id='shipcompany'>
+					<input type="text" class="form-control" id='shipcompany' name='shipaccountno'>
 
 					<label for="attn">Attention</label>
-					<input type="text" class="form-control" id='attn'>
+					<input type="text" class="form-control" id='attn' name='shipattn'>
 
 					<label for="shipaddress">Address</label>
 					<input type="text" class="form-control" id="shipaddress" name="shipadd">
@@ -255,7 +262,10 @@
       <div class="modal-footer text-center" style="
   align-items: center;
   justify-content: center;">
-        <button type="button" class="btn btn-primary qof-submit" style='background-color:#C3151C;color:white;width:40%;border-radius:0px;border:none;
+        <button type="button" class="btn btn-primary qof-submit g-recaptcha"
+        data-sitekey="6LfwZtoUAAAAABBo9xlcJHOEd_2WXqiqYsZN5q5p"
+        data-callback='onSubmit'
+        data-action='submit' style='background-color:#C3151C;color:white;width:40%;border-radius:0px;border:none;
     font-size: 10px;padding: 10px;'>Submit Order</button>
         <button type="button" class="btn btn-dark qof-clear" data-dismiss="modal" style="width:40%;border-radius:0px;border:none;
     font-size: 10px;padding: 10px;">Reset Form</button>
